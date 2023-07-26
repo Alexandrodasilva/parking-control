@@ -23,23 +23,23 @@ public class ParkingSpotModels implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id; // uuid são identificadores, em que não corre o risco de ter conflitos dentro arquitetura 
     @Column(nullable = false, unique = true, length = 10)
-    private String parkingSpotNumber;
+    private String parkingSpotNumber; //numero da vaga
     @Column(nullable = false, unique = true, length = 7)
-    private String licensePlateCar;
+    private String licensePlateCar; //placa do carro
     @Column(nullable = false, length = 70)
-    private String brandCar;
+    private String brandCar; //marca do carro
     @Column(nullable = false, length = 70)
     private String modelCar;
     @Column(nullable = false, length = 70)
     private String colorCar;
     @Column(nullable = false)
-    private LocalDateTime registrationDate;
+    private LocalDateTime registrationDate; //data de registro
     @Column(nullable = false, length = 130)
-    private String responsibleName;
+    private String responsibleName; //responsavel do veic.ou apart.
     @Column(nullable = false, length = 30)
     private String apartment;
     @Column(nullable = false, length = 30)
-    private String block;
+    private String block; // bloco/torre
 
    // public static long getSerialversionuid() {
      //   return serialVersionUID;

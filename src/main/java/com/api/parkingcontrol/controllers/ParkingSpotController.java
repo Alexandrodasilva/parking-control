@@ -31,7 +31,7 @@ import com.api.parkingcontrol.services.ParkingSpotService;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/api")
+@RequestMapping("/parking-spot")
 public class ParkingSpotController {
 
     final ParkingSpotService parkingSpotService;
@@ -58,14 +58,14 @@ public class ParkingSpotController {
         return ResponseEntity.status(HttpStatus.CREATED).body(parkingSpotService.save(parkingSpotModels));
     }
 
-    @GetMapping("/parking-spot")
+    @GetMapping
     public ResponseEntity<List<ParkingSpotModels>> getAllParkingSpots(
                                                        /* @PageableDefault(page = 0, size = 10, sort = "id", 
                                                             direction = Sort.Direction.ASC) Pageable pageable */){
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll(/*pageable */));
     }
 
-    @GetMapping("/parking-spot/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Object> getOneParkingSpot(@PathVariable(value= "id") UUID id){
         Optional<ParkingSpotModels> parkingSpotModelOptional = parkingSpotService.findById(id);
         if(!parkingSpotModelOptional.isPresent()){
@@ -74,7 +74,7 @@ public class ParkingSpotController {
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotModelOptional.get());
     }
 
-    @DeleteMapping("/parking-spot/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> deletParkingSpot(@PathVariable(value = "id") UUID id){
         Optional<ParkingSpotModels> parkingSpotModelOptional = parkingSpotService.findById(id);
         if(!parkingSpotModelOptional.isPresent()){
@@ -84,7 +84,7 @@ public class ParkingSpotController {
         return ResponseEntity.status(HttpStatus.OK).body("sucessfully");
     }
 
-    @PutMapping("/parking-spot/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> updateParkingSpot(@PathVariable(value = "id") UUID id,
                                                     @RequestBody @Valid ParkingSpotDto parkingSpotDto){
         Optional<ParkingSpotModels> parkingSpotModelOptional = parkingSpotService.findById(id);
