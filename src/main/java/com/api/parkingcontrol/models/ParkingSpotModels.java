@@ -4,13 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -36,20 +30,13 @@ public class ParkingSpotModels implements Serializable {
     private String colorCar;
     @Column(nullable = false)
     private LocalDateTime registrationDate; // data de registro
-    @Column(nullable = false, length = 130)
-    private String responsibleName; // responsavel do veic.ou apart.
-    @Column(nullable = false, length = 30)
-    private String apartment;
-    @Column(nullable = false, length = 30)
-    private String block; // bloco/torre
-
     @ManyToOne(optional = false)
     @NotNull
-    private Person person;
+    private PersonModel person;
+    @ManyToOne(optional = false)
+    @NotNull
+    private ApartamentModel apartament;
 
-    // public static long getSerialversionuid() {
-    // return serialVersionUID;
-    // }
     public UUID getId() {
         return id;
     }
@@ -106,35 +93,19 @@ public class ParkingSpotModels implements Serializable {
         this.registrationDate = registrationDate;
     }
 
-    public String getResponsibleName() {
-        return responsibleName;
-    }
-
-    public void setResponsibleName(String responsibleName) {
-        this.responsibleName = responsibleName;
-    }
-
-    public String getApartment() {
-        return apartment;
-    }
-
-    public void setApartment(String apartment) {
-        this.apartment = apartment;
-    }
-
-    public String getBlock() {
-        return block;
-    }
-
-    public void setBlock(String block) {
-        this.block = block;
-    }
-
-    public void setPerson(Person person) {
+    public void setPerson(PersonModel person) {
         this.person = person;
     }
 
-    public Person getPerson() {
+    public PersonModel getPerson() {
         return this.person;
+    }
+
+    public ApartamentModel getApartament() {
+        return apartament;
+    }
+
+    public void setApartament(ApartamentModel apartament) {
+        this.apartament = apartament;
     }
 }

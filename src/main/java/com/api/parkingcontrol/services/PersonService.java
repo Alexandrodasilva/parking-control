@@ -3,7 +3,7 @@ package com.api.parkingcontrol.services;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import com.api.parkingcontrol.models.Person;
+import com.api.parkingcontrol.models.PersonModel;
 import com.api.parkingcontrol.repositories.PersonRepository;
 
 @Service
@@ -15,7 +15,7 @@ public class PersonService {
     }
 
     @Transactional
-    public Person save(Person person) {
+    public PersonModel save(PersonModel person) {
         return personRepository.save(person);
     }
 }

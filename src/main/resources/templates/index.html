@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pessoas</title>
+</head>
+<body>
+    <h1>Lista</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>parkingSpotNumber - </th>
+                <th>licensePlateCar - </th>
+                <th>brandCar - </th>
+                <th>modelCar</th>
+                <th>cliente</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pessoa : ${nomeDoAtributo}">
+                <td th:text="${pessoa.parkingSpotNumber}"></td>
+                <td th:text="${pessoa.licensePlateCar}"></td>
+                <td th:text="${pessoa.brandCar}"></td>
+                <td th:text="${pessoa.modelCar}"></td>
+                <td th:text="${pessoa.person.name}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

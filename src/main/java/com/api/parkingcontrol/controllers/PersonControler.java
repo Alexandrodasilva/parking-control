@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.parkingcontrol.models.Person;
+import com.api.parkingcontrol.models.PersonModel;
 import com.api.parkingcontrol.services.PersonService;
 
 @RestController
@@ -28,7 +28,7 @@ public class PersonControler {
     }
 
     @PostMapping
-    public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid Person person) {
+    public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid PersonModel person) {
         return ResponseEntity.status(HttpStatus.CREATED).body(personService.save(person));
     }
 }
