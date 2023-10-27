@@ -59,27 +59,24 @@ public class ParkingSpotController {
     @PostMapping
     public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotModels parkingSpotDto) {
 
-        // if
-        // (parkingSpotService.existsByLicensePlateCar(parkingSpotDto.getLicensePlateCar()))
-        // {
-        // return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: license
-        // plate car is already in use");
-        // }
-        // if
-        // (parkingSpotService.existsByParkingSpotNumber(parkingSpotDto.getParkingSpotNumber()))
-        // {
-        // return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Parking
-        // spot is already in use");
-        // }
-        // if
-        // (parkingSpotService.existsByApartmentAndBlock(parkingSpotDto.getApartment(),
-        // parkingSpotDto.getBlock())) {
-        // return ResponseEntity.status(HttpStatus.CONFLICT)
-        // .body("Conflict: paking spot already registered for this apartment/block");
-        // }
+        if
+        (parkingSpotService.existsByLicensePlateCar(parkingSpotDto.getLicensePlateCar()))
+        {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: license plate car is already in use");
+        }
+        if
+        (parkingSpotService.existsByParkingSpotNumber(parkingSpotDto.getParkingSpotNumber()))
+        {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Parking spot is already in use");
+        } 
+        if
+        (apartamentService.existsByApartmentAndBlock(parkingSpotDto.getApartament().getNameApartament(),
+        parkingSpotDto.getApartament().getBlock())) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+        .body("Conflict: paking spot already registered for this apartment/block");
+        }
         PersonModel person = personService.save(parkingSpotDto.getPerson());
         ApartamentModel apartamentModel = apartamentService.save(parkingSpotDto.getApartament());
-
         var parkingSpotModels = new ParkingSpotModels();
         BeanUtils.copyProperties(parkingSpotDto, parkingSpotModels);
         parkingSpotModels.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));

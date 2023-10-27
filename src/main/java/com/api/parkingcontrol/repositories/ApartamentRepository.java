@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.api.parkingcontrol.models.ApartamentModel;
 
 @Repository
-public interface ApartamentRepository  extends JpaRepository<ApartamentModel, UUID>{
-    
+public interface ApartamentRepository extends JpaRepository<ApartamentModel, UUID> {
+    boolean existsByApartmentAndBlock(String nameApartament, String block);
 }

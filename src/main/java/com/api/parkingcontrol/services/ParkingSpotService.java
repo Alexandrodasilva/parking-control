@@ -27,15 +27,12 @@ public class ParkingSpotService {
     public ParkingSpotModels save(ParkingSpotModels parkingSpotModels) {
         return parkingSpotRepository.save(parkingSpotModels);
     }
-    // public boolean existsByLicensePlateCar(String licensePlateCar) {
-    // return parkingSpotRepository.existsByLicensePlateCar(licensePlateCar);
-    // }
-    // public boolean existsByParkingSpotNumber(String parkingSpotNumber) {
-    // return parkingSpotRepository.existsByParkingSpotNumber(parkingSpotNumber);
-    // }
-    // public boolean existsByApartmentAndBlock(String apartment, String block) {
-    // return parkingSpotRepository.existsByApartmentAndBlock(apartment, block);
-    // }
+    public boolean existsByLicensePlateCar(String licensePlateCar) {
+    return parkingSpotRepository.existsByLicensePlateCar(licensePlateCar);
+    }
+    public boolean existsByParkingSpotNumber(String parkingSpotNumber) {
+    return parkingSpotRepository.existsByParkingSpotNumber(parkingSpotNumber);
+    }
 
     public List<ParkingSpotModels> findAll(/* Pageable pageable */) {
         return parkingSpotRepository.findAll(/* pageable */);
